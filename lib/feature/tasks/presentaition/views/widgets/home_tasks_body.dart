@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tasky_app/constant.dart';
-import 'package:tasky_app/core/utils/app_routers.dart';
-import 'package:tasky_app/feature/tasks/presentaition/views/widgets/all_category_tasks.dart';
-import 'package:tasky_app/feature/tasks/presentaition/views/widgets/custom_task.dart';
+import 'package:to_do_app/constant.dart';
+import 'package:to_do_app/core/utils/app_routers.dart';
+import 'package:to_do_app/feature/tasks/presentaition/views/widgets/all_category_tasks.dart';
+import 'package:to_do_app/feature/tasks/presentaition/views/widgets/custom_task.dart';
 
 class HomeTasksBody extends StatelessWidget {
   const HomeTasksBody({super.key});

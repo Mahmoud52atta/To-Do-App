@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tasky_app/feature/splash/presentation/views/widget/start_view_body.dart';
+import 'package:to_do_app/feature/splash/presentation/views/widget/start_view_body.dart';
 
 class StartView extends StatelessWidget {
   const StartView({super.key});

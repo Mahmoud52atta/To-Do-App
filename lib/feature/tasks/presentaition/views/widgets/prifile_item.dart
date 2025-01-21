@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tasky_app/constant.dart';
+import 'package:to_do_app/constant.dart';
 
 class ProfileItem extends StatelessWidget {
   final String title;

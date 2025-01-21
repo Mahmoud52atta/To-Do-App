@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tasky_app/core/utils/assets.dart';
+import 'package:to_do_app/core/utils/assets.dart';
 
 class CustomTask extends StatelessWidget {
   const CustomTask({
@@ -20,8 +20,8 @@ class CustomTask extends StatelessWidget {
           children: [
             Row(
               children: [
-                const SizedBox(
-                  width: 200,
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.8,
                   child: Text(
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tasky_app/core/utils/assets.dart';
-import 'package:tasky_app/feature/tasks/presentaition/views/widgets/add_task_appbar.dart';
-import 'package:tasky_app/feature/tasks/presentaition/views/widgets/custom_add_img.dart';
-import 'package:tasky_app/feature/tasks/presentaition/views/widgets/drob_down_priority.dart';
-import 'package:tasky_app/feature/tasks/presentaition/views/widgets/elevaited_bottom_add_task.dart';
-import 'package:tasky_app/feature/tasks/presentaition/views/widgets/text_form_field.dart';
+import 'package:to_do_app/core/utils/assets.dart';
+import 'package:to_do_app/feature/tasks/presentaition/views/widgets/add_task_appbar.dart';
+import 'package:to_do_app/feature/tasks/presentaition/views/widgets/custom_add_img.dart';
+import 'package:to_do_app/feature/tasks/presentaition/views/widgets/drob_down_priority.dart';
+import 'package:to_do_app/feature/tasks/presentaition/views/widgets/elevaited_bottom_add_task.dart';
+import 'package:to_do_app/feature/tasks/presentaition/views/widgets/text_form_field.dart';
 
 class AddTaskView extends StatelessWidget {
   const AddTaskView({super.key});
