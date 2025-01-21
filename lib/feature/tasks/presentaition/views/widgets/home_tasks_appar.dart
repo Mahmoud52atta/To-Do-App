@@ -4,8 +4,8 @@ import 'package:to_do_app/constant.dart';
 import 'package:to_do_app/core/utils/app_routers.dart';
 import 'package:to_do_app/core/utils/assets.dart';
 
-class HomeTasksAppar extends StatelessWidget {
-  const HomeTasksAppar({super.key});
+class HomeTasksAppBar extends StatelessWidget {
+  const HomeTasksAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {

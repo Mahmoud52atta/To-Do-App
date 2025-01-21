@@ -10,21 +10,19 @@ class HomeTasks extends StatelessWidget {
     return const Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 22),
-        child: Expanded(
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 60,
-              ),
-              HomeTasksAppar(),
-              SizedBox(
-                height: 50,
-              ),
-              HomeTasksBody()
-            ],
-          ),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 60,
+            ),
+            HomeTasksAppBar(),
+            SizedBox(
+              height: 50,
+            ),
+            HomeTasksBody()
+          ],
         ),
       ),
     );
