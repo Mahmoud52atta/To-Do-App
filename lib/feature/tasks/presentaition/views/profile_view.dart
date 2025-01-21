@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:tasky_app/core/utils/assets.dart';
-import 'package:tasky_app/feature/tasks/presentaition/views/widgets/prifile_item.dart';
-import 'package:tasky_app/feature/tasks/presentaition/views/widgets/profile_view_appbar.dart';
+import 'package:to_do_app/feature/tasks/presentaition/views/widgets/prifile_item.dart';
+import 'package:to_do_app/feature/tasks/presentaition/views/widgets/profile_view_appbar.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});

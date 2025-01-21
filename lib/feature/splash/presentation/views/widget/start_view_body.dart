@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tasky_app/constant.dart';
-import 'package:tasky_app/core/utils/assets.dart';
+import 'package:to_do_app/constant.dart';
+import 'package:to_do_app/core/utils/assets.dart';
 
 class StartViewBody extends StatelessWidget {
   const StartViewBody({
@@ -11,7 +11,8 @@ class StartViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
       Image.asset(Assets.art),
-      SizedBox(
+      
+      const SizedBox(
         height: 24,
       ),
       const Text(

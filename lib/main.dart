@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tasky_app/core/utils/app_routers.dart';
+import 'package:to_do_app/core/utils/app_routers.dart';
 
 void main() {
   runApp(const TaskyApp());

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 class Assets {
   static const logo = 'assets/images/splash_logo.png';

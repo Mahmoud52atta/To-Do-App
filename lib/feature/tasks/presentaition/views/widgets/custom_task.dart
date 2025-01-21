@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tasky_app/core/utils/assets.dart';
+import 'package:to_do_app/core/utils/assets.dart';
 
 class CustomTask extends StatelessWidget {
   const CustomTask({
@@ -37,7 +37,7 @@ class CustomTask extends StatelessWidget {
                     // width: 60,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
-                        color: Color(0xffFFE4F2)),
+                        color: const Color(0xffFFE4F2)),
                     child: const Padding(
                       padding: EdgeInsets.all(5),
                       child: Text(

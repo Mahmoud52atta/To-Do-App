@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tasky_app/constant.dart';
-import 'package:tasky_app/core/utils/app_routers.dart';
-import 'package:tasky_app/core/utils/assets.dart';
+import 'package:to_do_app/constant.dart';
+import 'package:to_do_app/core/utils/app_routers.dart';
+import 'package:to_do_app/core/utils/assets.dart';
 
 class HomeTasksAppar extends StatelessWidget {
   const HomeTasksAppar({super.key});
