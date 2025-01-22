@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:to_do_app/constant.dart';
+import 'package:to_do_app/core/utils/app_routers.dart';
 import 'package:to_do_app/core/utils/assets.dart';
 
 class StartViewBody extends StatelessWidget {
@@ -11,7 +13,6 @@ class StartViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
       Image.asset(Assets.art),
-      
       const SizedBox(
         height: 24,
       ),
@@ -44,7 +45,9 @@ class StartViewBody extends StatelessWidget {
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 22),
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            GoRouter.of(context).push(AppRouters.kSignInView);
+          },
           style: const ButtonStyle(
               padding: WidgetStatePropertyAll(
                   EdgeInsets.symmetric(vertical: 15, horizontal: 60)),

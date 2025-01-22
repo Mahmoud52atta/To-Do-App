@@ -10,18 +10,19 @@ class HomeTasks extends StatelessWidget {
     return const Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 22),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 60,
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: HomeTasksAppBar(),
             ),
-            HomeTasksAppBar(),
-            SizedBox(
-              height: 50,
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 50,
+              ),
             ),
-            HomeTasksBody()
+            SliverToBoxAdapter(
+              child: HomeTasksBody(),
+            )
           ],
         ),
       ),
