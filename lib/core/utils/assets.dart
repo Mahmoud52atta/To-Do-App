@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Assets {
   static const logo = 'assets/images/splash_logo.png';
   static const art = 'assets/images/ART.png';
@@ -14,4 +12,6 @@ class Assets {
   static const calenderImage = 'assets/images/calendar.png';
   static const detailsImage = 'assets/images/image 1.png';
   static const imageQRCode = 'assets/images/image 3.png';
+  static const registerLogo = 'assets/images/register_logo.png';
+  static const arrowRight = 'assets/images/Arrow - right.png';
 }

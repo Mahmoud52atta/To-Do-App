@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:to_do_app/constant.dart';
+=======
+import 'package:go_router/go_router.dart';
+import 'package:to_do_app/constant.dart';
+import 'package:to_do_app/core/utils/app_routers.dart';
+>>>>>>> 9a9836cfe62ab520203257d28804ca87e4d46495
 import 'package:to_do_app/core/utils/assets.dart';
 
 class StartViewBody extends StatelessWidget {
@@ -42,25 +48,30 @@ class StartViewBody extends StatelessWidget {
       ),
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 22),
-        child: ElevatedButton(
-          onPressed: () {},
-          style: const ButtonStyle(
-              padding: WidgetStatePropertyAll(
-                  EdgeInsets.symmetric(vertical: 15, horizontal: 60)),
-              backgroundColor: WidgetStatePropertyAll(kPrimaryColor)),
-          child: Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Let’s Start',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Image.asset('assets/images/Arrow - Left.png')
-              ],
+        child: SizedBox(
+          height: 50,
+          child: ElevatedButton(
+            onPressed: () {
+              GoRouter.of(context).push(AppRouters.kSignInView);
+            },
+            style: const ButtonStyle(
+                padding: WidgetStatePropertyAll(
+                    EdgeInsets.symmetric(vertical: 15, horizontal: 60)),
+                backgroundColor: WidgetStatePropertyAll(kPrimaryColor)),
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Let’s Start',
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Image.asset(Assets.arrowRight)
+                ],
+              ),
             ),
           ),
         ),

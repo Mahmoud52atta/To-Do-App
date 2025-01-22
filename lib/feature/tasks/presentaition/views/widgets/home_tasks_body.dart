@@ -11,41 +11,31 @@ class HomeTasksBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Column(children: [
-        const Row(
-          children: [
-            Text(
-              'My Tasks',
-              style: TextStyle(
-                  fontWeight: FontWeight.w900,
-                  color: Colors.grey,
-                  fontSize: 20),
-            ),
-          ],
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        const Text(
+          'My Tasks',
+          style: TextStyle(
+              fontWeight: FontWeight.w900, color: Colors.grey, fontSize: 20),
         ),
         const SizedBox(
           height: 16,
         ),
-        const AllCategoryTasks(),
-        // const SizedBox(
-        //   height: 20,
-        // ),
-        SizedBox(
-          height: 500,
-          child: ListView.builder(
-            shrinkWrap: true,
-            itemCount: 4,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: EdgeInsets.symmetric(vertical: 12),
-                child: GestureDetector(
-                    onTap: () {
-                      GoRouter.of(context).push(AppRouters.kDetailsView);
-                    },
-                    child: CustomTask()),
-              );
-            },
-          ),
+        const Center(child: AllCategoryTasks()),
+
+        ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: 50,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              child: GestureDetector(
+                  onTap: () {
+                    GoRouter.of(context).push(AppRouters.kDetailsView);
+                  },
+                  child: const CustomTask()),
+            );
+          },
         ),
         // const SizedBox(
         //   height: 5,
