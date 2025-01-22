@@ -44,27 +44,30 @@ class StartViewBody extends StatelessWidget {
       ),
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 22),
-        child: ElevatedButton(
-          onPressed: () {
-            GoRouter.of(context).push(AppRouters.kSignInView);
-          },
-          style: const ButtonStyle(
-              padding: WidgetStatePropertyAll(
-                  EdgeInsets.symmetric(vertical: 15, horizontal: 60)),
-              backgroundColor: WidgetStatePropertyAll(kPrimaryColor)),
-          child: Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Let’s Start',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Image.asset('assets/images/Arrow - Left.png')
-              ],
+        child: SizedBox(
+          height: 50,
+          child: ElevatedButton(
+            onPressed: () {
+              GoRouter.of(context).push(AppRouters.kSignInView);
+            },
+            style: const ButtonStyle(
+                padding: WidgetStatePropertyAll(
+                    EdgeInsets.symmetric(vertical: 15, horizontal: 60)),
+                backgroundColor: WidgetStatePropertyAll(kPrimaryColor)),
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Let’s Start',
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Image.asset(Assets.arrowRight)
+                ],
+              ),
             ),
           ),
         ),

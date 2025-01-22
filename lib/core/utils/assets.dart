@@ -13,4 +13,5 @@ class Assets {
   static const detailsImage = 'assets/images/image 1.png';
   static const imageQRCode = 'assets/images/image 3.png';
   static const registerLogo = 'assets/images/register_logo.png';
+  static const arrowRight = 'assets/images/Arrow - right.png';
 }

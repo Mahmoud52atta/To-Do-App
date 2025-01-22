@@ -141,7 +141,8 @@ class _RegisterSectionState extends State<RegisterSection> {
                   ),
                 )
               ],
-            )
+            ),
+             const SizedBox(height: 30),
           ],
         ),
       ),
