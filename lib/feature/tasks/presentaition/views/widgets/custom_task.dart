@@ -20,8 +20,8 @@ class CustomTask extends StatelessWidget {
           children: [
             Row(
               children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.8,
+                const SizedBox(
+                  width: 200,
                   child: Text(
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
