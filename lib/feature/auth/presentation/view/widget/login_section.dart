@@ -30,7 +30,7 @@ class _LoginSectionState extends State<LoginSection> {
           GoRouter.of(context).go(AppRouters.kHomeTasks);
         } else if (state is AuthFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.errMessage)),
+            SnackBar(content: Text(state.message)),
           );
         }
       },
@@ -113,6 +113,7 @@ class _LoginSectionState extends State<LoginSection> {
                       setState(() {});
                     }
                     context.read<AuthCubit>().login(phoneNumber!, password!);
+                    GoRouter.of(context).push(AppRouters.kHomeTasks);
                   },
                 ),
                 const SizedBox(height: 24),

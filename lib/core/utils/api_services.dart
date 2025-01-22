@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:to_do_app/feature/auth/data/model/auth_model.dart';
 
 class ApiService {
-  final String baseUrl = 'https://todo.iraqsapp.com'; 
+  final String baseUrl = 'https://todo.iraqsapp.com';
 
   Future<Map<String, dynamic>> login(String phone, String password) async {
     final url = Uri.parse('$baseUrl/auth/login');
@@ -22,7 +22,7 @@ class ApiService {
     }
   }
 
-  Future<void> register(AuthModel authModel) async {
+  Future<Map<String, dynamic>> register(AuthModel authModel) async {
     final url = Uri.parse('$baseUrl/auth/register');
 
     final response = await http.post(
@@ -32,7 +32,7 @@ class ApiService {
     );
 
     if (response.statusCode == 200) {
-      return json.decode(response.body);
+      return json.decode(response.body); // أعد البيانات المستلمة هنا
     } else if (response.statusCode == 401) {
       throw Exception('Unauthorized: Invalid credentials');
     } else {
