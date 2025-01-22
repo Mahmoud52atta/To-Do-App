@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-=======
 import 'package:responsive_framework/responsive_wrapper.dart';
->>>>>>> 9a9836cfe62ab520203257d28804ca87e4d46495
 import 'package:to_do_app/core/utils/app_routers.dart';
 
 void main() {
@@ -16,7 +13,7 @@ class TaskyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       routerConfig: AppRouters.router,
-       builder: (context, child) => ResponsiveWrapper.builder(child,
+      builder: (context, child) => ResponsiveWrapper.builder(child,
           maxWidth: 1200,
           minWidth: 480,
           defaultScale: true,

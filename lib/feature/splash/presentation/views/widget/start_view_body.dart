@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:to_do_app/constant.dart';
-=======
 import 'package:go_router/go_router.dart';
 import 'package:to_do_app/constant.dart';
 import 'package:to_do_app/core/utils/app_routers.dart';
->>>>>>> 9a9836cfe62ab520203257d28804ca87e4d46495
 import 'package:to_do_app/core/utils/assets.dart';
 
 class StartViewBody extends StatelessWidget {

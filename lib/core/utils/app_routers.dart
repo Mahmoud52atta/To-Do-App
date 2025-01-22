@@ -1,9 +1,6 @@
 import 'package:go_router/go_router.dart';
-<<<<<<< HEAD
-=======
 import 'package:to_do_app/feature/auth/presentation/view/sign_in_view.dart';
 import 'package:to_do_app/feature/auth/presentation/view/sign_up_view.dart';
->>>>>>> 9a9836cfe62ab520203257d28804ca87e4d46495
 import 'package:to_do_app/feature/splash/presentation/views/splash_view.dart';
 import 'package:to_do_app/feature/splash/presentation/views/start_view.dart';
 import 'package:to_do_app/feature/tasks/presentaition/views/add_task_view.dart';
