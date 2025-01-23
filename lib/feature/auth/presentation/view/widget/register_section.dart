@@ -30,7 +30,7 @@ class _RegisterSectionState extends State<RegisterSection> {
           GoRouter.of(context).go(AppRouters.kHomeTasks);
         } else if (state is AuthFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Error: ${state.errMessage}')),
+            SnackBar(content: Text('Error: ${state.message}')),
           );
         }
       },
@@ -172,6 +172,7 @@ class _RegisterSectionState extends State<RegisterSection> {
                             autovalidateMode = AutovalidateMode.always;
                             setState(() {});
                           }
+                          GoRouter.of(context).push(AppRouters.kHomeTasks);
                         },
                       ),
               ],

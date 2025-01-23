@@ -13,7 +13,7 @@ class TaskyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       routerConfig: AppRouters.router,
-       builder: (context, child) => ResponsiveWrapper.builder(child,
+      builder: (context, child) => ResponsiveWrapper.builder(child,
           maxWidth: 1200,
           minWidth: 480,
           defaultScale: true,
