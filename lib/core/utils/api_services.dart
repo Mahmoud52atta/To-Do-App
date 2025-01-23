@@ -13,7 +13,7 @@ class ApiService {
       body: json.encode({'phone': phone, 'password': password}),
     );
 
-    if (response.statusCode == 200) {
+    if (response.statusCode == 201) {
       return json.decode(response.body);
     } else if (response.statusCode == 401) {
       throw Exception('Unauthorized: Invalid credentials');
@@ -33,8 +33,8 @@ class ApiService {
 
     if (response.statusCode == 200) {
       return json.decode(response.body);
-    } else if (response.statusCode == 401) {
-      throw Exception('Unauthorized: Invalid credentials');
+    } else if (response.statusCode == 422) {
+      throw Exception('Unauthorized: this phone number already exist');
     } else {
       throw Exception('Failed to register: ${response.statusCode}');
     }
