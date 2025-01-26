@@ -17,38 +17,40 @@ abstract class AppRouters {
   static const kSignInView = '/signInView';
   static const kSignUpView = '/signUpView';
 
-  static final router = GoRouter(routes: [
-    GoRoute(
-      path: '/',
-      builder: (context, state) => const SplashView(),
-    ),
-    GoRoute(
-      path: kStartView,
-      builder: (context, state) => const StartView(),
-    ),
-    GoRoute(
-      path: kHomeTasks,
-      builder: (context, state) => const HomeTasks(),
-    ),
-    GoRoute(
-      path: kProfileView,
-      builder: (context, state) => const ProfileView(),
-    ),
-    GoRoute(
-      path: kAddTaskView,
-      builder: (context, state) => const AddTaskView(),
-    ),
-    GoRoute(
-      path: kDetailsView,
-      builder: (context, state) => const DetailsView(),
-    ),
-    GoRoute(
-      path: kSignInView,
-      builder: (context, state) => const SignInView(),
-    ),
-    GoRoute(
-      path: kSignUpView,
-      builder: (context, state) => const SignUpView(),
-    ),
-  ]);
+  static final router = GoRouter(
+      // initialLocation: kHomeTasks,
+      routes: [
+        GoRoute(
+          path: '/',
+          builder: (context, state) => const SplashView(),
+        ),
+        GoRoute(
+          path: kStartView,
+          builder: (context, state) => const StartView(),
+        ),
+        GoRoute(
+          path: kHomeTasks,
+          builder: (context, state) => const HomeTasks(),
+        ),
+        GoRoute(
+          path: kProfileView,
+          builder: (context, state) => const ProfileView(),
+        ),
+        GoRoute(
+          path: kAddTaskView,
+          builder: (context, state) => const AddTaskView(),
+        ),
+        GoRoute(
+          path: kDetailsView,
+          builder: (context, state) => const DetailsView(),
+        ),
+        GoRoute(
+          path: kSignInView,
+          builder: (context, state) => const SignInView(),
+        ),
+        GoRoute(
+          path: kSignUpView,
+          builder: (context, state) => const SignUpView(),
+        ),
+      ]);
 }

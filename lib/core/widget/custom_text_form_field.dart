@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -21,7 +20,8 @@ class CustomTextFormField extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.obscureText = false,
-    this.onTapSuffixIcon, this.onChanged,
+    this.onTapSuffixIcon,
+    this.onChanged,
   });
 
   @override

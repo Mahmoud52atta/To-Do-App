@@ -18,7 +18,14 @@ class _RegisterSectionState extends State<RegisterSection> {
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   bool _isPasswordVisible = false;
-  String? name, phoneNumber, yearsOfExperience, address, password, level;
+  String? phone;
+  dynamic password;
+  String? disableName;
+  String? experiance;
+  dynamic address;
+  String? level;
+  String? token;
+  // String? name, phoneNumber, yearsOfExperience, address, password, level;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
@@ -54,7 +61,7 @@ class _RegisterSectionState extends State<RegisterSection> {
                 CustomTextFormField(
                   hintText: 'Name...',
                   onChanged: (value) {
-                    name = value;
+                    disableName = value;
                   },
                   validator: (value) {
                     return value!.isEmpty ? 'Enter your name' : null;
@@ -74,7 +81,7 @@ class _RegisterSectionState extends State<RegisterSection> {
                     ],
                   ),
                   onChanged: (value) {
-                    phoneNumber = value;
+                    phone = value;
                   },
                   validator: (value) {
                     return value!.isEmpty ? 'Enter phone number' : null;
@@ -84,7 +91,7 @@ class _RegisterSectionState extends State<RegisterSection> {
                 CustomTextFormField(
                   hintText: 'Years of experience',
                   onChanged: (value) {
-                    yearsOfExperience = value;
+                    experiance = value;
                   },
                   validator: (value) {
                     return value!.isEmpty ? 'Enter years of experience' : null;
@@ -160,19 +167,20 @@ class _RegisterSectionState extends State<RegisterSection> {
                         onTap: () {
                           if (formKey.currentState!.validate()) {
                             final authModel = AuthModel(
-                              phone: phoneNumber!,
+                              phone: phone!,
                               password: password!,
-                              displayName: name!,
-                              experienceYears: int.parse(yearsOfExperience!),
+                              displayName: disableName!,
+                              experienceYears: experiance!,
                               address: address!,
                               level: level!,
                             );
                             context.read<AuthCubit>().register(authModel);
+                            // context.read<AuthCubit>().register(authModel);
                           } else {
                             autovalidateMode = AutovalidateMode.always;
                             setState(() {});
                           }
-                          GoRouter.of(context).push(AppRouters.kHomeTasks);
+                          // GoRouter.of(context).push(AppRouters.kHomeTasks);
                         },
                       ),
               ],

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:to_do_app/feature/tasks/presentaition/manage/cubit/task_cubit.dart';
 import 'package:to_do_app/feature/tasks/presentaition/views/widgets/home_tasks_appar.dart';
 import 'package:to_do_app/feature/tasks/presentaition/views/widgets/home_tasks_body.dart';
 
@@ -7,21 +9,24 @@ class HomeTasks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 22),
+        padding: const EdgeInsets.symmetric(horizontal: 22),
         child: CustomScrollView(
           slivers: [
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: HomeTasksAppBar(),
             ),
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: SizedBox(
                 height: 50,
               ),
             ),
             SliverToBoxAdapter(
-              child: HomeTasksBody(),
+              child: BlocProvider(
+                create: (context) => TaskCubit(),
+                child: const HomeTasksBody(),
+              ),
             )
           ],
         ),

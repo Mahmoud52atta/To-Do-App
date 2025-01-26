@@ -27,6 +27,9 @@ class _LoginSectionState extends State<LoginSection> {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is AuthSuccess) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('login Successful')),
+          );
           GoRouter.of(context).go(AppRouters.kHomeTasks);
         } else if (state is AuthFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -113,7 +116,7 @@ class _LoginSectionState extends State<LoginSection> {
                       setState(() {});
                     }
                     context.read<AuthCubit>().login(phoneNumber!, password!);
-                    GoRouter.of(context).push(AppRouters.kHomeTasks);
+                    // context.read<AuthCubit>().login(phoneNumber!, password!);
                   },
                 ),
                 const SizedBox(height: 24),

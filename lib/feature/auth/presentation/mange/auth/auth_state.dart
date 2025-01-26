@@ -7,10 +7,10 @@ class AuthInitial extends AuthState {}
 class AuthLoading extends AuthState {}
 
 class AuthSuccess extends AuthState {
-  final String token;
-  final String refreshToken;
+  // final String token;
+  // final String refreshToken;
 
-  AuthSuccess(this.token, this.refreshToken);
+  AuthSuccess();
 }
 
 class AuthFailure extends AuthState {
