@@ -9,18 +9,19 @@ class AuthServise {
 
   // PostRegesterService(AuthModel authmodel);
   Future<AuthModel> regester(AuthModel authModel) async {
-    Map<String, dynamic> data = await Api().post(
+    Map<String, dynamic>? data = await Api().post(
       url: '$baseUrl/auth/register',
-      body: jsonEncode(authModel),
+      body: jsonEncode(authModel.toJson()),
 
       //
     );
+    print('API Response: $data');
     return AuthModel.fromJson(data);
   }
 
-  Future<Map<String, dynamic>> login(
-      {required String phone, required String password}) async {
-    Map<String, dynamic> data = await Api().post(
+  Future<Map<String, dynamic>?> login(
+      {required String? phone, required String? password}) async {
+    Map<String, dynamic>? data = await Api().post(
       url: '$baseUrl/auth/login',
       body: jsonEncode({'phone': phone, 'password': password}),
     );

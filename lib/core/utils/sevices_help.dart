@@ -38,7 +38,7 @@ class Api {
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
     } else if (response.statusCode == 401) {
-      throw Exception('not authorized need to refresh${response.statusCode}');
+      throw Exception('not authorized need to refresh${response.body}');
     } else if (response.statusCode == 402) {
       throw Exception(' refresh failed${response.statusCode}');
     }

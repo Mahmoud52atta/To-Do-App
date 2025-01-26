@@ -1,10 +1,10 @@
 class AuthModel {
-  final String phone;
-  final String password;
-  final String displayName;
-  final String experienceYears;
-  final String address;
-  final String level;
+  final String? phone;
+  final String? password;
+  final String? displayName;
+  final String? experienceYears;
+  final String? address;
+  final String? level;
 
   AuthModel({
     required this.phone,
@@ -14,14 +14,14 @@ class AuthModel {
     required this.address,
     required this.level,
   });
-  factory AuthModel.fromJson(jsonData) {
+  factory AuthModel.fromJson(Map<String, dynamic>? jsonData) {
     return AuthModel(
-      phone: jsonData['phone'],
-      password: jsonData['password'],
-      displayName: jsonData['displayName'],
-      experienceYears: jsonData['experienceYears'],
-      address: jsonData['address'],
-      level: jsonData['level'],
+      phone: jsonData?['phone'],
+      password: jsonData?['password'],
+      displayName: jsonData?['displayName'],
+      experienceYears: jsonData?['experienceYears'],
+      address: jsonData?['address'],
+      level: jsonData?['level'],
     );
   }
 

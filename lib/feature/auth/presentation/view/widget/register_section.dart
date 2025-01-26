@@ -160,29 +160,30 @@ class _RegisterSectionState extends State<RegisterSection> {
                   },
                 ),
                 const SizedBox(height: 24),
-                state is AuthLoading
-                    ? const Center(child: CircularProgressIndicator())
-                    : CustomButton(
-                        title: 'Sign Up',
-                        onTap: () {
-                          if (formKey.currentState!.validate()) {
-                            final authModel = AuthModel(
-                              phone: phone!,
-                              password: password!,
-                              displayName: disableName!,
-                              experienceYears: experiance!,
-                              address: address!,
-                              level: level!,
-                            );
-                            context.read<AuthCubit>().register(authModel);
-                            // context.read<AuthCubit>().register(authModel);
-                          } else {
-                            autovalidateMode = AutovalidateMode.always;
-                            setState(() {});
-                          }
-                          // GoRouter.of(context).push(AppRouters.kHomeTasks);
-                        },
-                      ),
+                // state is AuthLoading
+                //     ? const Center(child: CircularProgressIndicator())
+                // :
+                CustomButton(
+                  title: 'Sign Up',
+                  onTap: () {
+                    if (formKey.currentState!.validate()) {
+                      final authModel = AuthModel(
+                        phone: phone!,
+                        password: password!,
+                        displayName: disableName!,
+                        experienceYears: experiance!,
+                        address: address!,
+                        level: level!,
+                      );
+                      context.read<AuthCubit>().register(authModel);
+                      // context.read<AuthCubit>().register(authModel);
+                    } else {
+                      autovalidateMode = AutovalidateMode.always;
+                      setState(() {});
+                    }
+                    // GoRouter.of(context).push(AppRouters.kHomeTasks);
+                  },
+                ),
               ],
             ),
           ),
