@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:to_do_app/core/utils/app_routers.dart';
+import 'package:to_do_app/core/utils/routers/app_routers.dart';
 import 'package:to_do_app/core/widget/custom_button.dart';
 import 'package:to_do_app/core/widget/custom_text_form_field.dart';
-import 'package:to_do_app/feature/auth/data/model/auth_model.dart';
 import 'package:to_do_app/feature/auth/presentation/mange/auth/auth_cubit.dart';
 
 class RegisterSection extends StatefulWidget {
@@ -18,26 +17,20 @@ class _RegisterSectionState extends State<RegisterSection> {
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   bool _isPasswordVisible = false;
-  String? phone;
-  dynamic password;
-  String? disableName;
-  String? experiance;
-  dynamic address;
-  String? level;
-  String? token;
+
   // String? name, phoneNumber, yearsOfExperience, address, password, level;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
-        if (state is AuthSuccess) {
+        if (state is SignUpSuccess) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Registration Successful')),
           );
-          GoRouter.of(context).go(AppRouters.kHomeTasks);
-        } else if (state is AuthFailure) {
+          // GoRouter.of(context).go(AppRouters.kHomeTasks);
+        } else if (state is SignUpFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Error: ${state.message}')),
+            SnackBar(content: Text('Error: ${state.errormessage}')),
           );
         }
       },
@@ -59,16 +52,18 @@ class _RegisterSectionState extends State<RegisterSection> {
                 ),
                 const SizedBox(height: 24),
                 CustomTextFormField(
+                  controller: context.read<AuthCubit>().signUpName,
                   hintText: 'Name...',
-                  onChanged: (value) {
-                    disableName = value;
-                  },
+                  // onChanged: (value) {
+                  //   disableName = value;
+                  // },
                   validator: (value) {
                     return value!.isEmpty ? 'Enter your name' : null;
                   },
                 ),
                 const SizedBox(height: 15),
                 CustomTextFormField(
+                  controller: context.read<AuthCubit>().signUpPhoneNumber,
                   hintText: '123 456-7890',
                   keyboardType: TextInputType.phone,
                   prefixIcon: const Row(
@@ -80,19 +75,20 @@ class _RegisterSectionState extends State<RegisterSection> {
                       Text("+20"),
                     ],
                   ),
-                  onChanged: (value) {
-                    phone = value;
-                  },
+                  // onChanged: (value) {
+                  //   phone = value;
+                  // },
                   validator: (value) {
                     return value!.isEmpty ? 'Enter phone number' : null;
                   },
                 ),
                 const SizedBox(height: 15),
                 CustomTextFormField(
+                  controller: context.read<AuthCubit>().signUpExperienceYears,
                   hintText: 'Years of experience',
-                  onChanged: (value) {
-                    experiance = value;
-                  },
+                  // onChanged: (value) {
+                  //   experiance = value;
+                  // },
                   validator: (value) {
                     return value!.isEmpty ? 'Enter years of experience' : null;
                   },
@@ -104,7 +100,7 @@ class _RegisterSectionState extends State<RegisterSection> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  value: level,
+                  value: context.read<AuthCubit>().signUpLevel,
                   hint: const Text('Choose experience Level'),
                   items: [
                     'Entry Level',
@@ -121,7 +117,7 @@ class _RegisterSectionState extends State<RegisterSection> {
                       .toList(),
                   onChanged: (value) {
                     setState(() {
-                      level = value;
+                      context.read<AuthCubit>().signUpLevel = value;
                     });
                   },
                   validator: (value) {
@@ -130,16 +126,18 @@ class _RegisterSectionState extends State<RegisterSection> {
                 ),
                 const SizedBox(height: 15),
                 CustomTextFormField(
+                  controller: context.read<AuthCubit>().signUpAddress,
                   hintText: 'Address',
-                  onChanged: (value) {
-                    address = value;
-                  },
+                  // onChanged: (value) {
+                  //   address = value;
+                  // },
                   validator: (value) {
                     return value!.isEmpty ? 'Enter your address' : null;
                   },
                 ),
                 const SizedBox(height: 15),
                 CustomTextFormField(
+                  controller: context.read<AuthCubit>().signUpPassword,
                   hintText: 'Password...',
                   obscureText: !_isPasswordVisible,
                   suffixIcon: Icon(
@@ -152,9 +150,9 @@ class _RegisterSectionState extends State<RegisterSection> {
                       _isPasswordVisible = !_isPasswordVisible;
                     });
                   },
-                  onChanged: (value) {
-                    password = value;
-                  },
+                  // onChanged: (value) {
+                  //   password = value;
+                  // },
                   validator: (value) {
                     return value!.isEmpty ? 'Enter your password' : null;
                   },
@@ -163,27 +161,34 @@ class _RegisterSectionState extends State<RegisterSection> {
                 // state is AuthLoading
                 //     ? const Center(child: CircularProgressIndicator())
                 // :
-                CustomButton(
-                  title: 'Sign Up',
-                  onTap: () {
-                    if (formKey.currentState!.validate()) {
-                      final authModel = AuthModel(
-                        phone: phone!,
-                        password: password!,
-                        displayName: disableName!,
-                        experienceYears: experiance!,
-                        address: address!,
-                        level: level!,
-                      );
-                      context.read<AuthCubit>().register(authModel);
-                      // context.read<AuthCubit>().register(authModel);
-                    } else {
-                      autovalidateMode = AutovalidateMode.always;
-                      setState(() {});
-                    }
-                    // GoRouter.of(context).push(AppRouters.kHomeTasks);
-                  },
-                ),
+                state is SignUpLoading
+                    ? const Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : CustomButton(
+                        title: 'Sign Up',
+                        onTap: () {
+                          if (formKey.currentState!.validate()) {
+                            // final authModel = AuthModel(
+                            //   phone: phone!,
+                            //   password: password!,
+                            //   displayName: disableName!,
+                            //   experienceYears: experiance,
+                            //   address: address!,
+                            //   level: level!,
+                            // );
+                            // context.read<AuthCubit>().si(authModel);
+                            formKey.currentState!.save();
+                            context.read<AuthCubit>().signUp();
+
+                            // context.read<AuthCubit>().register(authModel);
+                          } else {
+                            autovalidateMode = AutovalidateMode.always;
+                            setState(() {});
+                          }
+                          // GoRouter.of(context).push(AppRouters.kHomeTasks);
+                        },
+                      ),
               ],
             ),
           ),

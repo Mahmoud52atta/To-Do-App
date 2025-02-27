@@ -1,13 +1,13 @@
-class TaskModel {
+class AddTaskModel {
   final String id;
   final String title;
   final String description;
   final bool isCompleted;
   final String priority;
-  final DateTime dueDate;
-  final String imageUrl; // إضافة خاصية الصورة
+  final DateTime? dueDate;
+  final String? imageUrl; // إضافة خاصية الصورة
 
-  TaskModel({
+  AddTaskModel({
     required this.id,
     required this.title,
     required this.description,
@@ -17,8 +17,8 @@ class TaskModel {
     required this.imageUrl, // إضافة الصورة
   });
 
-  factory TaskModel.fromJson(Map<String, dynamic> json) {
-    return TaskModel(
+  factory AddTaskModel.fromJson(Map<String, dynamic> json) {
+    return AddTaskModel(
       id: json['_id'],
       title: json['title'],
       description: json['desc'],
@@ -36,7 +36,7 @@ class TaskModel {
       'desc': description,
       'isCompleted': isCompleted,
       'priority': priority,
-      'dueDate': dueDate.toIso8601String(),
+      'dueDate': dueDate?.toIso8601String(),
       'image': imageUrl, // إضافة الصورة
     };
   }

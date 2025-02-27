@@ -7,15 +7,15 @@ part 'add_tas_state.dart';
 class AddTaskCubit extends Cubit<AddTaskState> {
   AddTaskCubit(this.toDoServise) : super(AddTasInitial());
   final ToDoServise toDoServise;
-  void addTask(TaskModel taskModel) {
-    emit(AddTaskLooding());
-    try {
-      toDoServise.addTask(taskModel);
-      emit(AddTaskSuccess());
-    } catch (e) {
-      emit(
-        AddTaskFailuer(e.toString()),
-      );
-    }
-  }
+  // void addTask(AddTaskModel taskModel) {
+  //   emit(AddTaskLooding());
+  //   try {
+  //     toDoServise.addTask(taskModel);
+  //     emit(AddTaskSuccess());
+  //   } catch (e) {
+  //     emit(
+  //       AddTaskFailuer(e.toString()),
+  //     );
+  //   }
+  // }
 }

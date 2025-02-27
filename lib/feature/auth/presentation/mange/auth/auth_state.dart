@@ -4,17 +4,28 @@ abstract class AuthState {}
 
 class AuthInitial extends AuthState {}
 
-class AuthLoading extends AuthState {}
+class SignInLoading extends AuthState {}
 
-class AuthSuccess extends AuthState {
-  // final String token;
+class SignInSuccess extends AuthState {
+  // final String accesstoken;
   // final String refreshToken;
-
-  AuthSuccess();
 }
 
-class AuthFailure extends AuthState {
-  final String message;
+class SignInFailure extends AuthState {
+  final String errormessage;
 
-  AuthFailure(this.message);
+  SignInFailure({required this.errormessage});
+}
+
+class SignUpLoading extends AuthState {}
+
+class SignUpSuccess extends AuthState {
+  // final String accesstoken;
+  // final String refreshToken;
+}
+
+class SignUpFailure extends AuthState {
+  final String errormessage;
+
+  SignUpFailure({required this.errormessage});
 }

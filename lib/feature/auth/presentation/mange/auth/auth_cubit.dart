@@ -1,75 +1,58 @@
 import 'package:bloc/bloc.dart';
-import 'package:to_do_app/core/utils/api_services.dart';
-import 'package:to_do_app/feature/auth/data/model/auth_model.dart';
-import 'package:to_do_app/feature/auth/data/auth_service.dart';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:to_do_app/repos/auth_repo.dart';
 
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit(
-    this.postRegesterService,
-  ) : super(AuthInitial());
+  GlobalKey<FormState> signInFormKey = GlobalKey();
+//Sign in email
+  TextEditingController signInPhone = TextEditingController();
+//Sign in password
+  TextEditingController signInPassword = TextEditingController();
+//Profile Pic
+  XFile? profilePic;
+//Sign up name
+  GlobalKey<FormState> signUpFormKey = GlobalKey();
+  TextEditingController signUpName = TextEditingController();
+//Sign up phone number
+  TextEditingController signUpPhoneNumber = TextEditingController();
+//Sign up email
+  TextEditingController signUpExperienceYears = TextEditingController();
+//Sign up password
+  TextEditingController signUpPassword = TextEditingController();
+//Sign up confirm password
+  TextEditingController signUpAddress = TextEditingController();
+  String? signUpLevel;
+  int? experienceYears;
+
+  AuthCubit(this.repo) : super(AuthInitial());
   // final ApiService apiService;
-  final AuthServise postRegesterService;
+  final AuthRepo repo;
 
-  Future<void> login(String phone, String password) async {
-    emit(AuthLoading());
-    try {
-      postRegesterService.login(phone: phone, password: password);
-      // final token = response['access_token'];
-      // final refreshToken = response['refresh_token'];
+  Future<void> signIn() async {
+    emit(SignInLoading());
 
-      emit(AuthSuccess());
-    } catch (e) {
-      emit(AuthFailure(e.toString()));
-    }
+    final response = await repo.signin(
+        pasword: signInPhone.text, phone: signInPassword.text);
+    response.fold(
+      (errMessage) => emit(SignInFailure(errormessage: errMessage)),
+      (signInModel) => emit(SignInSuccess()),
+    );
   }
 
-  Future<void> register(AuthModel authModel) async {
-    emit(AuthLoading());
-
-    // final response =await postRegesterService.regester(phone:phone , password: password, disableName: disableName, experiance: experiance, address: address, level: level, token: token);
-    try {
-      postRegesterService.regester(authModel);
-      // final token = response['access_token'];
-      // // تأكد من إرجاع القيمة هنا
-      // final refreshToken = response['refresh_token'];
-
-      emit(AuthSuccess());
-    } catch (e) {
-      emit(AuthFailure(e.toString()));
-    }
-  }
-
-  Future<void> logOut(String token) async {
-    emit(AuthLoading());
-
-    // final response =await postRegesterService.regester(phone:phone , password: password, disableName: disableName, experiance: experiance, address: address, level: level, token: token);
-    try {
-      postRegesterService.logOut(token: token);
-      // final token = response['access_token'];
-      // // تأكد من إرجاع القيمة هنا
-      // final refreshToken = response['refresh_token'];
-
-      emit(AuthSuccess());
-    } catch (e) {
-      emit(AuthFailure(e.toString()));
-    }
-  }
-
-  Future<void> profile() async {
-    emit(AuthLoading());
-
-    // final response =await postRegesterService.regester(phone:phone , password: password, disableName: disableName, experiance: experiance, address: address, level: level, token: token);
-    try {
-      postRegesterService.profile();
-      // final token = response['access_token'];
-      // // تأكد من إرجاع القيمة هنا
-      // final refreshToken = response['refresh_token'];
-
-      emit(AuthSuccess());
-    } catch (e) {
-      emit(AuthFailure(e.toString()));
-    }
+  Future<void> signUp() async {
+    final response = await repo.signUp(
+        phone: signUpPhoneNumber.text,
+        password: signUpPassword.text,
+        disPlayName: signUpName.text,
+        experienceYears: int.parse(signUpExperienceYears.text),
+        adress: signUpAddress.text,
+        level: signUpLevel);
+    response.fold(
+      (erroreMesage) => emit(SignUpFailure(errormessage: erroreMesage)),
+      (signUpModel) => emit(SignUpSuccess()),
+    );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:to_do_app/constant.dart';
-import 'package:to_do_app/core/utils/assets.dart';
+import 'package:to_do_app/core/utils/assets/assets.dart';
 import 'package:to_do_app/feature/tasks/presentaition/views/widgets/custom_qr_code.dart';
 import 'package:to_do_app/feature/tasks/presentaition/views/widgets/drop_down.dart';
 

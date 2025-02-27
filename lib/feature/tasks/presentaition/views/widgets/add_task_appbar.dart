@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:to_do_app/core/utils/assets.dart';
+import 'package:to_do_app/core/utils/assets/assets.dart';
 
 class AddTaskAppBar extends StatelessWidget {
   const AddTaskAppBar({

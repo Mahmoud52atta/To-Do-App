@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_app/core/utils/assets.dart';
+import 'package:to_do_app/core/utils/assets/assets.dart';
 import 'package:to_do_app/feature/auth/presentation/view/widget/login_section.dart';
 
 class SignInViewBody extends StatelessWidget {

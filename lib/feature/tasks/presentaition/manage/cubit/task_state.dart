@@ -9,7 +9,9 @@ final class TaskLoading extends TaskState {}
 
 // ignore: must_be_immutable
 final class TaskSuccess extends TaskState {
-  List<TaskModel>? tasks;
+  final List<TaskModel> tasks;
+
+  TaskSuccess({required this.tasks});
 }
 
 final class TaskFailuer extends TaskState {

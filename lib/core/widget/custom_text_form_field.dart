@@ -10,6 +10,7 @@ class CustomTextFormField extends StatelessWidget {
   final bool obscureText;
   final void Function()? onTapSuffixIcon;
   final void Function(String)? onChanged;
+  final FormFieldSetter<String>? onSaved;
 
   const CustomTextFormField({
     super.key,
@@ -22,11 +23,13 @@ class CustomTextFormField extends StatelessWidget {
     this.obscureText = false,
     this.onTapSuffixIcon,
     this.onChanged,
+    this.onSaved,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onSaved: onSaved,
       controller: controller,
       keyboardType: keyboardType,
       obscureText: obscureText,

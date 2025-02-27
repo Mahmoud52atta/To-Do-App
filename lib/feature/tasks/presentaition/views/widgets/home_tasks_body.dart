@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:to_do_app/constant.dart';
-import 'package:to_do_app/core/utils/app_routers.dart';
+import 'package:to_do_app/core/utils/routers/app_routers.dart';
 import 'package:to_do_app/feature/tasks/presentaition/manage/cubit/task_cubit.dart';
 import 'package:to_do_app/feature/tasks/presentaition/views/widgets/all_category_tasks.dart';
 import 'package:to_do_app/feature/tasks/presentaition/views/widgets/custom_task.dart';
@@ -27,10 +27,11 @@ class HomeTasksBody extends StatelessWidget {
         BlocBuilder<TaskCubit, TaskState>(
           builder: (context, state) {
             if (state is TaskSuccess) {
+              // context.read<TaskCubit>().getList(page: 2);
               return ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: state.tasks?.length,
+                itemCount: state.tasks.length,
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 12),
@@ -38,7 +39,9 @@ class HomeTasksBody extends StatelessWidget {
                         onTap: () {
                           GoRouter.of(context).push(AppRouters.kDetailsView);
                         },
-                        child: const CustomTask()),
+                        child: CustomTask(
+                          addTaskModel: state.tasks[index],
+                        )),
                   );
                 },
               );
@@ -47,7 +50,7 @@ class HomeTasksBody extends StatelessWidget {
               //  ScaffoldMessenger.of(context).showSnackBar(
               //       SnackBar(content: Text('Error: ${state.errorMessage}')));
             } else {
-              return const CircularProgressIndicator();
+              return const Center(child: CircularProgressIndicator());
             }
           },
         ),

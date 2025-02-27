@@ -1,9 +1,30 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
-import 'package:to_do_app/core/utils/app_routers.dart';
+import 'package:to_do_app/cashe/helper_cache.dart';
+import 'package:to_do_app/core/utils/routers/app_routers.dart';
+import 'package:to_do_app/core/utils/Api/dio_consumer.dart';
+import 'package:to_do_app/feature/auth/presentation/mange/auth/auth_cubit.dart';
+import 'package:to_do_app/feature/tasks/data/todo_servise.dart';
+import 'package:to_do_app/feature/tasks/presentaition/manage/add_task/add_task_cubit.dart';
+import 'package:to_do_app/repos/auth_repo.dart';
 
-void main() {
-  runApp(const TaskyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await CacheHelper().init();
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider<AuthCubit>(
+          create: (context) =>
+              AuthCubit(AuthRepo(apiConsumer: DioConsumer(dio: Dio()))),
+        ),
+        // أضف المزيد من الـ Cubits إذا لزم الأمر
+      ],
+      child: const TaskyApp(),
+    ),
+  );
 }
 
 class TaskyApp extends StatelessWidget {

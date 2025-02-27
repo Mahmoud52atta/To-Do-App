@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_app/core/utils/assets.dart';
+import 'package:to_do_app/core/utils/assets/assets.dart';
 
 class CustomQRCode extends StatelessWidget {
   const CustomQRCode({
